@@ -12,20 +12,25 @@ export const AuthProvider = ({ children }: IAuthProvider) => {
     const [user, setUser] = useState<IUser | null>();
 
     useEffect(() => {
+
         const user = getUserLocalStorage();
 
         if (user) {
             setUser(user);
         }
+
     }, []);
 
-    async function authenticate(user: string, password: string) {
+    const authenticate = async (user: string, password: string) => {
+
         const response = await loginRequest(user, password);
 
         const payload = { token: response.token, user: response.user };
 
         setUser(payload);
+
         setUserLocalStorage(payload);
+
     }
 
     function logout() {

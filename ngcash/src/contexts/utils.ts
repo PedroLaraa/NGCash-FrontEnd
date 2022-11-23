@@ -1,4 +1,4 @@
-import api from "../config";
+import { api } from "../config";
 
 import { IUser } from "./types";
 
@@ -21,12 +21,16 @@ export function getUserLocalStorage() {
 
 export async function loginRequest(user: string, password: string) {
     try {
+
         const request = await api.post("/login", {
             user,
             password,
         });
 
+        console.log(request.data)
+
         return request.data;
+
     } catch (error) {
         return null;
     }

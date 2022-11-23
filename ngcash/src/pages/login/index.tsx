@@ -1,8 +1,10 @@
-import React, { useState } from 'react'
+import React, { useState  } from 'react'
 
 import './loginStyle.css'
 
 import { useAuth } from '../../contexts/useAuth';
+
+import { useNavigate } from 'react-router-dom';
 
 const Login: React.FC = () => {
 
@@ -12,22 +14,26 @@ const Login: React.FC = () => {
 
     const { authenticate } = useAuth();
 
+    const navigate = useNavigate();
+
     async function handleSubmit(user: string, senha: string) {
         try {
 
             await authenticate(user, senha);
 
-            console.log("Dados: ", user, senha);
+            navigate('/home')
 
         } catch (error) {
             console.log("Error: ", error);
-        }
-    }
+        };
+    };
 
     return (
         <div className='body-Login d-flex justify-content-center vh-10'>
             <div className='formLogin p-4'>
-                <form className=''>
+                <form 
+                autoComplete='false'
+                className=''>
                     <section className='containerForm'>
                         <h3>💸NGCash | BankAccount</h3>
                         <div className='p-2'>
