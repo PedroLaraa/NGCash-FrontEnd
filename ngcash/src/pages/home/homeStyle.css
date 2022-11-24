@@ -1,0 +1,66 @@
+.container-home{
+    background-color: ghostwhite;
+    height: 100vh;
+}
+
+.background-sup{
+    background-color: rgb(0, 0, 0);
+    height: 10rem;
+    align-items: center;
+    box-shadow: 0px 2px 2px #FF00FA;
+}
+
+.background-sup p{
+    position: relative;
+    text-align: center;
+    font-size: 4rem;
+    font-family: 'JetBrains Mono', monospace;
+    color: #FF00FA;
+    z-index: 999;
+    text-shadow: 1px 3px 1px rgb(255, 255, 255);
+}
+
+.background-sup a{
+    background-image: url(https://ngcash.notion.site/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F19962083-8f0b-4fc6-9700-b3cc4f49990e%2FUntitled.png?table=block&id=223de32e-1ed0-47f2-aa90-cc0da84754ee&spaceId=6f9b2303-1422-45c0-a306-a5a53110fd01&width=2000&userId=&cache=v2);
+    width: 100%;
+    height: 10rem;
+    background-size: cover;
+    position: absolute;
+    z-index: 1;
+    opacity: 0.5;
+}
+
+.background-sup button{
+    z-index: 2;
+}
+
+
+.saldo-box{
+    border-radius: .6rem;
+    height: 20rem;
+}
+
+.operation-box{
+    border-radius: .6rem;
+    height: 20rem;
+}
+
+.operation-box img{
+    position: relative;
+    left: 8px;
+    width: 5rem;
+    text-align: center;
+}
+
+.operation-box p{
+    width: 5rem;
+    text-align: center;
+    text-transform: uppercase;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 1.6rem;
+}
+
+.saldo-box p{
+    font-size: 1.4rem;
+    font-family: 'JetBrains Mono', monospace;
+}

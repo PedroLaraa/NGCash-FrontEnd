@@ -8,6 +8,8 @@ import { AuthProvider } from './contexts';
 
 import { PrivateRoute } from "./components/PrivateRoute";
 import { PublicRoute } from "./components/PublicRoute";
+import Transaction from "./pages/transaction";
+import Signup from "./pages/signup";
 
 const Rotas = () => {
 
@@ -17,7 +19,9 @@ const Rotas = () => {
                 <BrowserRouter>
                     <Routes>
                         <Route path="/login" element={<PublicRoute><Login /></PublicRoute>} ></Route>
+                        <Route path="/signup" element={<PublicRoute><Signup /></PublicRoute>} ></Route>
                         <Route path="/home" element={<PrivateRoute><Home /></PrivateRoute>} ></Route>
+                        <Route path="/transaction" element={<PrivateRoute><Transaction /></PrivateRoute>} ></Route>
                     </Routes>
                 </BrowserRouter>
             </AuthProvider>

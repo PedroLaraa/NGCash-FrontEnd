@@ -10,6 +10,10 @@ export const PrivateRoute = ({children}: {children: JSX.Element}) => {
         return alert("Você não está autenticado! Faça login para continuar"), <Navigate to="/login" />
     };
 
+    if(!user.token){
+        return alert("Você não está autenticado! Faça login para continuar"), <Navigate to="/login" />
+    };
+
     return children
 
 }

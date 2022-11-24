@@ -17,15 +17,19 @@ export const AuthProvider = ({ children }: IAuthProvider) => {
 
         if (user) {
             setUser(user);
-        }
+        };
 
     }, []);
 
-    const authenticate = async (user: string, password: string) => {
+    const authenticate = async (username: string, password: string) => {
 
-        const response = await loginRequest(user, password);
+        const response = await loginRequest(username, password);
 
         const payload = { token: response.token, user: response.user };
+
+        if(response.auth === false){
+            return alert('Usuário ou senha inválidos!');
+        };
 
         setUser(payload);
 

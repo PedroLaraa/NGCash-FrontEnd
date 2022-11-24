@@ -1,50 +1,41 @@
-import React, { useState  } from 'react'
-
-import './loginStyle.css'
-
-import { useAuth } from '../../contexts/useAuth';
-
+import React, {useState} from 'react';
 import { useNavigate } from 'react-router-dom';
 
-const Login: React.FC = () => {
+import { register } from '../../services/Register';
+
+const Signup = () => {
 
     const [user, setUser] = useState("");
 
     const [senha, setSenha] = useState("");
 
-    const { authenticate } = useAuth();
-
     const navigate = useNavigate();
 
-    async function handleSubmit(user: string, senha: string) {
+    const registerNewUser = async () => {
 
         try {
 
-            await authenticate(user, senha);
-
-            if(localStorage.getItem("user")){
-                navigate('/home')
+            const response = await register(user, senha);
+            
+            if(response.sucess === false){
+                return alert(response.message);
             };
 
-        } catch (error) {
-            console.log("Error: ", error);
+            alert("User criado com sucesso!");
+
+            return navigate('/login');
+
+        } catch(err) {
+            return alert(`Erro: ${err}`);
         };
-    };
-
-    const register = () => {
-
-        navigate("/signup")
-
     }
 
-    return (
+    return(
         <div className='body-Login d-flex justify-content-center'>
             <div className='formLogin p-4'>
-                <form 
-                autoComplete='false'
-                className=''>
-                    <section className='containerForm'>
-                        <h3>💸NGCash | BankAccount</h3>
+                <form autoComplete='false'>
+                <section className='containerForm'>
+                        <h3>💸NGCash | Register BankAccount</h3>
                         <div className='p-2'>
                             <label>	• Usuário:</label>
                             <input
@@ -52,6 +43,8 @@ const Login: React.FC = () => {
                                 className='form-control'
                                 required={true}
                                 onChange={(e) => setUser(e.target.value)}
+                                minLength={3}
+                                maxLength={12}
                             />
                         </div>
                         <div className='p-2'>
@@ -61,24 +54,22 @@ const Login: React.FC = () => {
                                 className='form-control'
                                 required={true}
                                 onChange={(e) => setSenha(e.target.value)}
+                                minLength={8}
+                                maxLength={14}
                             />
                         </div>
                         <div className='d-flex justify-content-around pt-2'>
-                            <button
-                                className='btn btn-outline-dark'
-                                onClick={(e) => {
-                                    e.preventDefault()
-                                    handleSubmit(user, senha)
-                                }}
-                            >Login</button>
-                            <button onClick={(e) => {register()}} className='btn btn-outline-dark'>Registrar-se</button>
+                            <button onClick={(e) => {
+                                e.preventDefault()
+                                registerNewUser()
+                                }} className='btn btn-outline-dark'>Registrar-se</button>
                         </div>
                     </section>
                 </form>
             </div>
         </div>
-    );
+    )
 
-};
+}
 
-export default Login;
+export default Signup;
