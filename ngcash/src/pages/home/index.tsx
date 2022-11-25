@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React, { useState, useEffect } from 'react';
 
 import './homeStyle.css';
 
@@ -11,7 +11,12 @@ import { IBalance } from '../../interfaces/IBalance';
 import { ILoggedUser } from '../../interfaces/ILoggedUser';
 
 import { useAuth } from '../../contexts/useAuth';
+
 import { useNavigate } from 'react-router-dom';
+
+import { getTransactions } from '../../services/transaction';
+import ListTransaction from './transactions';
+import { ITransaction } from '../../interfaces/ITransaction';
 
 const Home = () => {
 
@@ -23,15 +28,22 @@ const Home = () => {
 
     const navigate = useNavigate();
 
+    const [transactions, setTransactions] = useState<ITransaction[] | null>()
+
     useEffect(() => {
 
         const user = getUserLocalStorage();
 
         setUserAccount(user.user);
 
-        if(user.token){
+        if (user.token) {
+
             balanceRequest(user.token).then((v) => {
                 setBalance(v);
+            });
+
+            getTransactions(user.token).then((v) => {
+                setTransactions(v);
             });
         };
 
@@ -44,7 +56,9 @@ const Home = () => {
         navigate('/login');
     };
 
-    return(
+    // console.log(transactions)
+
+    return (
         <div className='container-home'>
             <div className='row justify-content-md-center vw-100 m-0'>
                 <div className='background-sup col-12 d-flex justify-content-center'>
@@ -53,7 +67,7 @@ const Home = () => {
                     <button className='btn btn-dark' onClick={() => logoutUser()}>Logout</button>
                 </div>
             </div>
-            <div className='row justify-content-around vw-100 mt-4 '>
+            <div className='row justify-content-around vw-100 mt-4 account-infos'>
                 <div className='col-4 mt-4'>
                     <section className='saldo-box d-flex justify-content-end'>
                         <div className='pt-4'>
@@ -71,6 +85,15 @@ const Home = () => {
                             <p className=''>Transferir</p>
                         </div>
                     </section>
+                </div>
+            </div>
+            <div className='row justify-content-center vw-100 mt-4 account-transactions'>
+                <div className='col-6 mt-4'>
+                    <>
+                        <ListTransaction
+                        transactions={transactions}
+                        />
+                    </>
                 </div>
             </div>
         </div>

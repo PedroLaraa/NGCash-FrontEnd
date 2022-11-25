@@ -6,9 +6,12 @@ import { IBalance } from '../../interfaces/IBalance';
 
 import { ILoggedUser } from '../../interfaces/ILoggedUser';
 
+import { IResponse } from '../../interfaces/IResponse';
+
 import { balanceRequest } from '../../services/Home';
 
 import Logout from '../../services/logout';
+
 import { transaction } from '../../services/transaction';
 
 import './transactionStyle.css';
@@ -41,13 +44,15 @@ const Transaction = () => {
 
         const user = getUserLocalStorage();
 
-        const response = await transaction(destinatario, parseInt(valor), user.token);
+        const response: IResponse = await transaction(destinatario, parseInt(valor), user.token);
 
-        if(response.sucess === false){
+        console.log(response)
+
+        if (response.sucess === false) {
             return alert(response.message);
         };
 
-        return alert("Transação realizada com sucesso!")
+        return alert("Transação realizada com sucesso!");
 
     };
 
@@ -71,6 +76,7 @@ const Transaction = () => {
                                     type="text"
                                     className='form-control'
                                     required={true}
+                                    onChange={(e) => setDestinatario(e.target.value)}
                                 />
                             </div>
                             <div className='p-2'>
@@ -83,7 +89,10 @@ const Transaction = () => {
                                 />
                             </div>
                             <div className='d-flex justify-content-around pt-2'>
-                                <button onClick={() => transferirDinheiro()} className='btn btn-outline-dark'>Transferir</button>
+                                <button onClick={(e) => { 
+                                    e.preventDefault()
+                                    transferirDinheiro() 
+                                    }} className='btn btn-outline-dark'>Transferir</button>
                             </div>
                         </section>
                     </form>
