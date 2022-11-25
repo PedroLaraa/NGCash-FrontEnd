@@ -2,7 +2,7 @@ import { api } from "../../config";
 
 export async function transaction(destinatario: string, valor: number, token: string ){
 
-    const response = await api.post('transaction',
+    const res = await api.post('/transactions',
     {
         destinatario,
         valor,
@@ -11,6 +11,6 @@ export async function transaction(destinatario: string, valor: number, token: st
         }
     })
 
-    return response.data
+    return res.data
 
 }
