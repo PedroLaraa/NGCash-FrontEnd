@@ -17,13 +17,22 @@ const Logout = () => {
 
         navigate('/login');
     };
-    
-    return(
-        <button 
-        className='btn btn-dark' 
-        onClick={() => logoutUser()}
-        >Logout
-        </button>
+
+    const goHome = () => {
+
+        navigate('/home');
+
+    };
+
+    return (
+        <>
+            <button
+                className='btn btn-dark'
+                onClick={() => logoutUser()}
+            >Logout
+            </button>
+            <button className='btn btn-dark m-4' onClick={() => goHome()}>Home</button>
+        </>
     )
 
 }

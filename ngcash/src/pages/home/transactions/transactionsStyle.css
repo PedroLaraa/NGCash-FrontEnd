@@ -1,0 +1,8 @@
+.container-transactions h1{
+    text-transform: uppercase;
+    text-align: center;
+    font-size: 3rem;
+    font-family: 'JetBrains Mono', monospace;
+    color: #FF00FA;
+    text-shadow: 1px 3px 1px rgb(0, 0, 0);
+}

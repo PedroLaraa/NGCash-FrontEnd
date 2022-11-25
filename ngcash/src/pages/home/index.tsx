@@ -15,7 +15,9 @@ import { useAuth } from '../../contexts/useAuth';
 import { useNavigate } from 'react-router-dom';
 
 import { getTransactions } from '../../services/transaction';
+
 import ListTransaction from './transactions';
+
 import { ITransaction } from '../../interfaces/ITransaction';
 
 const Home = () => {
@@ -56,7 +58,11 @@ const Home = () => {
         navigate('/login');
     };
 
-    // console.log(transactions)
+    const goHome = () => {
+
+        navigate('/home')
+
+    }
 
     return (
         <div className='container-home'>
@@ -65,6 +71,7 @@ const Home = () => {
                     <a href='/home'>.</a>
                     <p>Olá, <>{userAccount?.username}</>!</p>
                     <button className='btn btn-dark' onClick={() => logoutUser()}>Logout</button>
+                    <button className='btn btn-dark m-4' onClick={() => goHome()}>Home</button>
                 </div>
             </div>
             <div className='row justify-content-around vw-100 mt-4 account-infos'>
@@ -91,7 +98,7 @@ const Home = () => {
                 <div className='col-6 mt-4'>
                     <>
                         <ListTransaction
-                        transactions={transactions}
+                            transactions={transactions}
                         />
                     </>
                 </div>

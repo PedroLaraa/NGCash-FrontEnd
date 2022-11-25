@@ -57,7 +57,7 @@ const Transaction = () => {
     };
 
     return (
-        <div className='container-home'>
+        <div className='container-home container-transaction-form'>
             <div className='row justify-content-md-center vw-100 m-0'>
                 <div className='background-sup col-12 d-flex justify-content-center'>
                     <a href='/home'>.</a>
