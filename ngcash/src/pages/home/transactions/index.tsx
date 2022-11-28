@@ -108,7 +108,7 @@ const ListTransaction: FC<ITransactionProps> = (props): JSX.Element => {
                                     {transactionsRecebidas?.map((v, i) => (
                                         <>
                                             <tr>
-                                                <td>- {v.value}</td>
+                                                <td>+ {v.value}</td>
                                                 <td>{(v.created_at).split('-').join('/').split("T").join(' - ').split('.').shift()}</td>
                                             </tr>
                                         </>
