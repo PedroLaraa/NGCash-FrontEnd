@@ -1,11 +1,4 @@
-import { useNavigate } from "react-router-dom";
-
 import { api } from "../../config";
-
-import { useAuth } from "../../contexts/useAuth";
-
-import { IBalance } from "../../interfaces/IBalance";
-
 
 export async function balanceRequest(token: string) {
     try {
@@ -17,7 +10,7 @@ export async function balanceRequest(token: string) {
         })
 
         if (request.data.auth === false) {
-            
+            return alert("Faça logout e depois login para ver sua conta!")
         }
 
         return request.data
