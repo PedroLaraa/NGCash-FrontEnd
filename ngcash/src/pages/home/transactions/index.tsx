@@ -40,22 +40,22 @@ const ListTransaction: FC<ITransactionProps> = (props): JSX.Element => {
                         setFilter('Saida')
                     }}
                         value='Saida'
-                        className={filter === 'Saida' ? `btn btn-success m-2` : `btn btn-dark m-2`}>Saída</button>
+                        className={filter === 'Saida' ? `btn btn-success m-2` : `btn btn-secondary m-2`}>Saída</button>
                     <button onClick={(e) => {
                         e.preventDefault()
                         setFilter('Todas')
                     }}
                         value='Todas'
-                        className={filter === 'Todas' ? `btn btn-success m-2` : `btn btn-dark m-2`}>Todas</button>
+                        className={filter === 'Todas' ? `btn btn-success m-2` : `btn btn-secondary m-2`}>Todas</button>
                     <button onClick={(e) => {
                         e.preventDefault()
                         setFilter('Entrada')
                     }}
                         value='Entrada'
-                        className={filter === 'Entrada' ? `btn btn-success m-2` : `btn btn-dark m-2`}>Entrada</button>
+                        className={filter === 'Entrada' ? `btn btn-success m-2` : `btn btn-secondary m-2`}>Entrada</button>
                 </div>
                 {filter === 'Todas' ?
-                    <table className='table mt-5 table-striped table-dark'>
+                    <table className='table mt-5 table-striped table-secondary'>
                         <thead>
                             <tr>
                                 <th scope='col'>Valor</th>
@@ -78,7 +78,7 @@ const ListTransaction: FC<ITransactionProps> = (props): JSX.Element => {
                         </tbody>
                     </table>
                     : filter === 'Saida' ?
-                        <table className='table mt-5 table-striped table-dark'>
+                        <table className='table mt-5 table-striped table-secondary'>
                             <thead>
                                 <tr>
                                     <th scope='col'>Valor</th>
@@ -97,7 +97,7 @@ const ListTransaction: FC<ITransactionProps> = (props): JSX.Element => {
                             </tbody>
                         </table>
                         : filter === 'Entrada' && (
-                            <table className='table mt-5 table-striped table-dark'>
+                            <table className='table mt-5 table-striped table-secondary'>
                                 <thead>
                                     <tr>
                                         <th scope='col'>Valor</th>
