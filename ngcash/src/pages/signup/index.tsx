@@ -1,4 +1,5 @@
 import React, {useState} from 'react';
+
 import { useNavigate } from 'react-router-dom';
 
 import { register } from '../../services/Register';
@@ -28,7 +29,7 @@ const Signup = () => {
         } catch(err) {
             return alert(`Erro: ${err}`);
         };
-    }
+    };
 
     return(
         <div className='body-Login d-flex justify-content-center'>
@@ -68,8 +69,7 @@ const Signup = () => {
                 </form>
             </div>
         </div>
-    )
-
-}
+    );
+};
 
 export default Signup;

@@ -1,10 +1,10 @@
-import React, { FC, useState, useEffect } from 'react'
+import React, { FC, useState, useEffect } from 'react';
 
 import { getUserLocalStorage } from '../../../contexts/utils';
 
 import { ITransactionProps } from '../../../interfaces/ITransactionProps';
 
-import './transactionsStyle.css'
+import './transactionsStyle.css';
 
 const ListTransaction: FC<ITransactionProps> = (props): JSX.Element => {
 
@@ -19,14 +19,14 @@ const ListTransaction: FC<ITransactionProps> = (props): JSX.Element => {
         const user = getUserLocalStorage();
 
         if (user.user) {
-            setIdUser(user.user.accountId)
+            setIdUser(user.user.accountId);
         };
 
     }, []);
 
-    const transactionsRecebidas = transactions?.filter(v => (v.creditedAccountId.id) === idUser)
+    const transactionsRecebidas = transactions?.filter(v => (v.creditedAccountId.id) === idUser);
 
-    const transactionsFeitas = transactions?.filter(v => (v.debitedAccountId.id) === idUser)
+    const transactionsFeitas = transactions?.filter(v => (v.debitedAccountId.id) === idUser);
 
     return (
         <>
@@ -118,8 +118,7 @@ const ListTransaction: FC<ITransactionProps> = (props): JSX.Element => {
                         )}
             </div>
         </>
-    )
-
+    );
 };
 
 export default ListTransaction;
